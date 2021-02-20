@@ -4,7 +4,7 @@ import axios from '../../axiosurl';
 import './UrlPage.scss';
 
 export const UrlPage = () => {
-    const [urls, setUrls] = useState([]);
+    const [urls, setUrls] = useState([{ shortUrl: 'Hdfsdf', title: 'fdf', longUrl: 'fdjfd', description: 'df' }]);
     const [selectedUrls, changeSelectedUrls] = useState([]);
     const geturls = () => {
         axios.get('/all', {

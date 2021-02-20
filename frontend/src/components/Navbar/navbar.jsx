@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import LogoImg from '../../assets/Logo1.png'
 import { Button } from '../Button/button';
 import './navbar.scss';
 export const Navbar = ({ used, user }) => {
@@ -7,14 +8,12 @@ export const Navbar = ({ used, user }) => {
     return (
         <div>
             <nav className="navbar-parent top">
-                <span className="Img">Here is an image</span>
+                <img src={LogoImg} className="Img" />
                 <span>
                     <div>PocketMe</div>
                     <div>Equiping technology in Education</div>
                 </span>
-                <img src='../../Logo1.png' alt="" />
                 <span>Search bar</span>
-
                 {
                     user ? <span>{`Hello, ${user.toUpperCase()}`}</span> : <Button title={`Register`} r={255} g={218} b={250} clickAction={() => history.push('/regiser')} />
                 }
