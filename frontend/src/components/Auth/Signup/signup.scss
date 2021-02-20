@@ -1,0 +1,115 @@
+@import '../../../misc/colorfont';
+
+.card-signup-main{
+    background-color: $dark-black!important;
+    background-image: linear-gradient(180deg,$primary-color -40%,$white 30%);
+    max-width: 465px;
+    input,input:focus,input:active{
+        background-color: transparent;
+    }
+    width: 50%;
+}
+
+
+
+.option-items{
+    background: transparent;
+    display: flex;
+    justify-content:center;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+    select{
+        background: transparent;
+        width: 100%;
+        margin-left:2px;
+        height: 35px;
+        border:none;
+        border-bottom: 2px solid black ;
+    }
+    select:focus,select:active{
+        background: transparent;
+        border-bottom: 2px solid black ;
+        outline: none;
+    }
+}
+
+input{
+    background: transparent;
+    height: 20px !important;
+}
+
+.institute{
+    margin-top: 0.9rem;
+}
+.btn-signup{
+    background-image: linear-gradient(40deg,$primary-color 0%,#190033 85%);
+    border-radius: 28px;
+    font-family: $normal-font;
+    width: 60%;
+    background-color: #242424;
+    color: white;
+    padding: 0.4rem 0;
+    font-size: 1.2rem;
+    border: none;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-signup:hover {
+    transform: scale(1.05);
+}
+
+.extras-container-signup{
+    
+    position: relative;
+    top: -10px;
+}
+.click{
+    color: rgb(56, 133, 221);
+    cursor: -webkit-grab;
+    transition: all ease-in-out 1s;
+    
+}
+
+.click:hover{
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 993px){
+    .institute{
+        margin-top:0;
+        position: relative;
+        top:-0.55rem;
+    }
+}
+@media only screen and (max-width: 600px){
+.extras-container-signup{
+    top:-1rem;
+}
+.institute{
+    margin-top:0;
+    position: relative;
+    top:0;
+}
+}
+
+
+@media only screen and (max-width: 420px){
+    .extras-container-signup{
+        top:-2rem;
+        padding: 1rem;
+    }}
+
+@media only screen and (max-width: 376px ) and (max-height: 700px){
+    .extras-container-signup{
+        top:1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+.text-extras{
+    font-size: 0.9rem;
+}
+
+}

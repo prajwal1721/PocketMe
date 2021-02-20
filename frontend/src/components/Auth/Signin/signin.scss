@@ -1,0 +1,69 @@
+// @import '../../../misc/colorfont';
+
+
+.card-signin-main {
+    // background-color: $dark-black!important;
+    // background-image: linear-gradient(180deg, $primary-color -40%, $white 30%);
+    max-width: 465px;
+
+    input,
+    input:focus,
+    input:active {
+        background-color: transparent;
+    }
+
+    width: 50%;
+}
+
+
+.btn-signin {
+    // background-image: linear-gradient(40deg, $primary-color 0%, $dark-purple 85%);
+    border-radius: 25px;
+    // font-family: $normal-font;
+    width: 60%;
+    background-color: #242424;
+    color: white;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    border: none;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-signin:hover {
+    transform: scale(1.05);
+}
+
+.click {
+    color: rgb(56, 133, 221);
+    cursor: -webkit-grab;
+
+}
+
+.hide {
+    display: none;
+}
+
+.banner-container-signin {
+    form {
+        height: 100%;
+    }
+
+    .card-signin-body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card-signin-main {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.extras-container-signin {
+    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

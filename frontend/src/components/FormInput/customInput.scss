@@ -1,0 +1,25 @@
+.custom-form.form-group {
+    .form-label.fade {
+        transform: translateY(20px);
+        transition-property: all;
+    }
+
+    .form-label.show {
+        transform: translateY(0px);
+    }
+
+    .form-control:focus {
+        outline: 0 !important;
+        box-shadow: none;
+        border-bottom: 2px solid seashell;
+    }
+
+    .form-control {
+        padding-left: 0 !important;
+        z-index: 1;
+        border: none;
+        border-bottom: 2px solid gray;
+        border-radius: 0;
+    }
+
+}

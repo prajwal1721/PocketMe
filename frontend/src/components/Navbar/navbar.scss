@@ -1,0 +1,29 @@
+.navbar-parent {
+    width: 100%;
+    position: fixed;
+    background-color: aliceblue;
+    // height: 50px;
+    right: 10px;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .Img {
+        background-image: url('../../assets/Logo1.png');
+        background-repeat: no-repeat;
+        // background-position: right 10px bottom 10px;
+    }
+
+    position: absolute;
+    left: 0px;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    max-width: 500px;
+    top: 50px;
+}

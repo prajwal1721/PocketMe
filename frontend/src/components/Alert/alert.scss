@@ -1,0 +1,15 @@
+#alertTab{
+    position: fixed;
+    top: 5px;
+    z-index: 2000;
+}
+
+@media only screen and (max-width: 376px ) and (max-height: 700px){
+    #alertTab{
+        top:0;
+    }
+    #alertText{
+        font-size: 0.75rem;
+        padding:0 !important;
+    }
+}
