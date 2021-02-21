@@ -8,7 +8,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT |3001;
+const PORT = process.env.PORT | 3001;
 const MONGO_URI = "mongodb://127.0.0.1:27017/testdb";
 const connected = chalk.bold.cyan;
 const error = chalk.bold.yellow;
@@ -16,8 +16,12 @@ const disconnected = chalk.bold.red;
 const termination = chalk.bold.magenta;
 
 const cors = require('cors')
-
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    withCredentials: true
+}
+app.use(cors(corsOptions));
 // mongoose connection
 mongoose.set('useFindAndModify', false);
 {
@@ -58,10 +62,18 @@ app.use(
 app.use(auth);
 app.use(url);
 
-app.post('/', (req, res) => {
-    var p = req.body;
-    console.log(req.body);
-    console.log(req.method);
-    res.send(p);
+app.get('/', (req, res) => {
+    const userName = req.session.currentloggedin;
+    User.findOne({ userName }).select({ _id: 0, urlLeft: 1, userName: 1 }).exec((err, user) => {
+        if (err) {
+            res.status(400).json(err._message);
+            return console.log(err);
+        }
+        if (!user) {
+            return res.send(null);
+        }
+        res.send(user);
+    });
+
 });
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
