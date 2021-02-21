@@ -1,55 +1,57 @@
 import React, { useState } from 'react';
 import { FormInput } from '../../FormInput/FormInput'
-// import { alertSuccess, alertWarning } from '../Alert/alert';
-// import axios from '../../../axiosurl';
-
+// import { alertSuccess, alertWarning } from '../../Alert/alert';
+import axios from '../../../axiosurl';
+import { useHistory } from 'react-router-dom';
 // import './signup.scss';
 
 
-export const SignUp = ({ handleClick }) => {
+export const SignUp = () => {
     const [Username, setUsername] = useState('');
     const [Name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassowrd] = useState('');
     const [countryCode, setCountryCode] = useState('');
     const [number, setNumber] = useState('');
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        /*   if (password !== cpassword) {
-               alertWarning("Passwords don't match");
-           }
-           else {
-               axios.post('/authentication/signup  ',
-                   {
-                       name: Name,
-                       userName: Username,
-                       email: email,
-                       password: password,
-                       number: number,
-                       urlAllocated: 1000,
-                       countryCode: countryCode,
-                       urlLeft: 0
-                   })
-                   .then((res) => {
-                       if (res.status === 200) {
-                           alertSuccess(res.data.message);
-                           console.log(res);
-                           setTimeout(
-                               () => handleClick(signin),
-                               2000);
-                           // history.push('/#');// won't work as rendering the same route now no need to check 
-   
-                       }
-                       else {
-                           alertWarning(res.data.message + ",please sign-up . ");
-                       }
-                   })
-                   .catch((err) => {
-                       alertWarning(err.response.data.message);
-                   });
-           }
-           */
+
+        axios.post('/register',
+            {
+                name: Name,
+                userName: Username,
+                email: email,
+                password: password,
+                number: number,
+                urlAllocated: 1000,
+                countryCode: countryCode,
+                urlLeft: 0
+            })
+            .then((res) => {
+                if (res.status === 200) {
+                    // alertSuccess(res.data);
+                    alert(res.data);
+                    console.log(res.data);
+                    setTimeout(
+                        () => history.push('/login'),
+                        1000);
+                    // won't work as rendering the same route now no need to check 
+
+                }
+                else {
+                    // alertWarning(res.data.message + ",please sign-up . ");
+                    alert('Error Try again');
+                }
+            })
+            .catch((err) => {
+                // alertWarning(err.response.data);
+                alert(err.response.data);
+                console.log(err.response.data);
+            });
+
+
     }
 
     return (

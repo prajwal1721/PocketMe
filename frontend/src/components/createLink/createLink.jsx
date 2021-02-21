@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validator from 'validator'
 import './createLink.scss';
+import axios from '../../axiosurl';
 import { Button } from '../Button/button';
 import { FormInput } from '../FormInput/FormInput';
 export const CreateLink = () => {
@@ -16,7 +17,6 @@ export const CreateLink = () => {
             return setErrorMessage('Enter a Valid URL')
         }
         const data = {
-            user: 'get user',
             title: linkTitle,
             shortUrl: shortUrl,
             longUrl: longUrl,
@@ -24,6 +24,16 @@ export const CreateLink = () => {
         }
         console.log(data);
         //axios call handling
+        axios.post('/add', data)
+            .then((res) => {
+                console.log(res.data);
+                alert(`Link Created ${res.data.shortUrl}`);
+                toggleView(false);
+            })
+            .catch((err) => {
+                console.log(err.response.data.toUpperCase());
+                alert(err.response.data.toUpperCase());
+            })
     }
     const change = () => {
         toggleView(!view);

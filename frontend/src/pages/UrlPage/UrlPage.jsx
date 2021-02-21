@@ -4,24 +4,23 @@ import axios from '../../axiosurl';
 import './UrlPage.scss';
 
 export const UrlPage = () => {
-    const [urls, setUrls] = useState([{ shortUrl: 'Hdfsdf', title: 'fdf', longUrl: 'fdjfd', description: 'df' }]);
+    const [urls, setUrls] = useState([]);
     const [selectedUrls, changeSelectedUrls] = useState([]);
     const geturls = () => {
-        axios.get('/all', {
-            headers: { 'Access-Control-Allow-Origin': '*' }
-        })
+        axios.get('/all')
             .then((res) => {
-                console.log(res);
-                setUrls(res.body);
+                console.log(res.data);
+                setUrls(res.data);
             })
             .catch((err) => {
-                console.error(err);
+                alert(err)
+                console.error(err.response);
             })
     }
     useEffect(
         () => {
             geturls();
-        }, [urls]
+        }, []
     )
     return (
         <div>

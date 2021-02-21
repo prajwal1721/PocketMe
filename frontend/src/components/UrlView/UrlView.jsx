@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Description } from '../Overlays/Description/description';
 import { QR } from '../Overlays/QR/qr';
 
@@ -52,7 +51,7 @@ export const UrlViews = ({ url: { shortUrl, title, longUrl, description }, selec
                             </td>
                             <td className='item'>{title}</td>
                             <td className='item'>{shortUrl}</td>
-                            <td className='item' ><a href={longUrl} target="_blank">{longUrl}</a></td>
+                            <td className='item' ><a href={longUrl} rel="noreferrer" target="_blank">{longUrl}</a></td>
                             <td className='item' onClick={(e) => {
                                 e.preventDefault();
                                 // didn't work
