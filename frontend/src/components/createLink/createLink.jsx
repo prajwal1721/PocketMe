@@ -4,7 +4,9 @@ import './createLink.scss';
 import axios from '../../axiosurl';
 import { Button } from '../Button/button';
 import { FormInput } from '../FormInput/FormInput';
-export const CreateLink = () => {
+import { useHistory } from 'react-router-dom';
+export const CreateLink = ({ userName }) => {
+    const history = useHistory();
     const [errorMessage, setErrorMessage] = useState('')
     const [view, toggleView] = useState(0);
     const [linkTitle, setLinkTitle] = useState('');
@@ -29,6 +31,7 @@ export const CreateLink = () => {
                 console.log(res.data);
                 alert(`Link Created ${res.data.shortUrl}`);
                 toggleView(false);
+                history.push('/');
             })
             .catch((err) => {
                 console.log(err.response.data.toUpperCase());
@@ -40,9 +43,11 @@ export const CreateLink = () => {
     }
     return (
         <div className="create">
+            {console.log(view)}
             {
                 view ?
-                    <div className="create-link close">
+                    <div className={`create-link close ${view}`}>
+                        <div className='tmp'></div>
                         <div className="toggle-createlink" onClick={change}>X</div>
                         <FormInput
                             set={setLinkTitle}
@@ -58,7 +63,7 @@ export const CreateLink = () => {
                             type='text'
                             value={shortUrl}
                         />
-                        <span>{`Link will be ${window.location.hostname}/${`username`}/${shortUrl}`}</span>
+
                         <FormInput
                             set={setLongUrl}
                             label={`Url`}
@@ -74,13 +79,14 @@ export const CreateLink = () => {
                             type='text'
                             value={description}
                         />
-                        <div onClick={handleSubmit}>Create Link</div>
+                        <span>{`Link will be ${window.location.hostname}/${userName}/${shortUrl}`}</span>
+                        <div className='create-button' onClick={handleSubmit}>Create Link</div>
                     </div> :
                     <Button
-                        className="toggle-createlink"
+                        className="create-link open"
                         title={`CREATE`} r={225} g={0} b={21}
                         clickAction={change} />
             }
-        </div>
+        </div >
     )
 }
