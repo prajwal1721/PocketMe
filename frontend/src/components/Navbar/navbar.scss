@@ -1,29 +1,96 @@
 .navbar-parent {
     width: 100%;
-    position: fixed;
-    background-color: aliceblue;
-    height: 50px;
+    opacity: full;
+    background-image: radial-gradient(rgba(228, 238, 255, 0.876), rgb(253, 237, 237));
+    // background-color: rgb(126, 4, 4);
+    height: 90px;
     right: 10px;
     padding: 10px 0px 10px 0px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     .Img {
         background-image: url('../../assets/Logo1.png');
         background-repeat: no-repeat;
         // background-position: right 10px bottom 10px;
+        padding: 0px 10px;
     }
 
-    position: absolute;
     left: 0px;
 }
 
 .top {
     top: 0;
-}
+    margin-bottom: 20px;
+    z-index: 1;
+    position: fixed;
 
-.bottom {
-    max-width: 500px;
-    top: 50px;
+    .nav-inner-left {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 1%;
+        margin-top: 10px;
+
+        .heading {
+            font-size: 2.3rem;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: solid 7px;
+        }
+    }
+
+    .nav-inner-right {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: 1%;
+        margin-top: 10px;
+
+    }
+
+    .searchbox {
+        height: 30px;
+        width: 80%;
+
+        input {
+            height: 30px;
+            width: 30%;
+        }
+
+        button {
+            height: 30px;
+            margin: 0px 20px;
+        }
+    }
+
+    .logout-signup-button {
+        padding: 0px 10px;
+        margin: 0px 20px;
+        height: 35px;
+    }
+
+    .create-link {
+        padding: 0px 10px;
+        // height: fit-content;
+    }
+
+    .user-display {
+        width: 90px;
+        margin: 0px 30px;
+        font-size: larger;
+    }
+
+
+    .sigin-button {
+        width: 50px;
+        margin: 0px 45px;
+        height: 30px;
+        // position: fixed;
+    }
+
+    .navbar-link {
+        width: max-content;
+        margin: 10px;
+        font-size: 1.3rem;
+
+    }
 }

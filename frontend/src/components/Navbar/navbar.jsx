@@ -9,47 +9,56 @@ export const Navbar = ({ used, user }) => {
     const [userName, changeUser] = useState(user);
     const history = useHistory();
     const [title, changeTitle] = useState(userName ? 'Logout' : 'Login');
+    const onClickLoginLogout = (e) => {
+        e.preventDefault();
+        console.log('clicked');
+        if (userName) {
+            axios.post('/logout')
+                .then((res) => {
+                    alert('Successfully logged out!');
+                    changeUser(null);
+                    changeTitle('Login');
+                    history.push(`/login`);
+                })
+                .catch((err) => {
+                    console.log(err.response);
+                })
+        }
+        else {
+            history.push('/login');
+        }
+
+        console.log(user);
+
+    }
     return (
-        <div>
+        <div className='container'>
             <nav className="navbar-parent top">
-                <img alt="logo" src={LogoImg} className="Img" style={{ width: '200px', height: '200px' }} />
-                <span>
-                    <div>PocketMe</div>
-                    <div>Equiping technology in Education</div>
-                </span>
-                <span>Search bar</span>
-                {
-                    userName ? <span>{`Hello, ${userName.toUpperCase()}`}</span> : <Button title={`Signup`} r={255} g={218} b={250} clickAction={() => history.push('/signup')} />
-                }
-                <CreateLink />
-                {console.log(userName)}
-                <button style={{ r: 255, g: 250, b: 218 }} onClick={(e) => {
-                    e.preventDefault();
-                    console.log('clicked');
-                    if (userName) {
-                        axios.post('/logout')
-                            .then((res) => {
-                                alert('Successfully logged out!');
-                                changeUser(null);
-                                changeTitle('Login');
-                            })
-                            .catch((err) => {
-                                console.log(err.response);
-                            })
-                    }
-                    else {
-                        history.push(`/login`);
+                <div className='nav-inner-left'>
+                    <img alt="logo" src={LogoImg} className="Img" style={{ width: '8    0px', height: '75px' }} />
+                    <span>
+                        <div className='heading'>PocketMe</div>
+                        <div>Equiping technology in Education</div>
+                    </span>
+                </div>
+                <div className='nav-inner-right'>
+                    {/* <span className='searchbox'>
+                    <input placeholder='search an url by title'></input>
+                    <button className='search-button'>Search</button>
+                </span> */}
+                    <CreateLink className='create-link' userName={userName} />
+                    {
+
+                        userName ? <div className='user-display'>{`Hello, ${userName.toUpperCase()}`}</div> : <Button className='sigin-button' title={`Signup`} r={255} g={255} b={255} clickAction={() => history.push('/signup')} />
                     }
 
-                    console.log(user);
+                    <span className='navbar-link'>{`Used ${1000 - used}`}</span>
+                    <span className='navbar-link'>{`Left ${used}`}</span>
 
-                }} >{title}</button>
+                    <button style={{ r: 255, g: 250, b: 218 }} onClick={onClickLoginLogout} className='logout-signup-button' >{title}</button>
+                </div>
             </nav >
-            <div className="navbar-parent bottom">
-                <span>{`Links used ${used}`}</span>
-                <span>{`Links Left ${1000 - used}`}</span>
-                <span></span>
-            </div>
+
         </div>
     );
 }

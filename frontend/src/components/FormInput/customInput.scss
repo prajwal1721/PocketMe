@@ -1,25 +1,23 @@
-.custom-form.form-group {
-    .form-label.fade {
-        transform: translateY(20px);
-        transition-property: all;
+.input-container {
+    padding: 10px 5px;
+    margin: 5px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    .input-label {
+        padding: 1px 10px;
+        margin-left: 1%;
     }
 
-    .form-label.show {
-        transform: translateY(0px);
+    .input-input {
+        font-size: 1.7rem;
+        margin-right: 1%;
     }
 
-    .form-control:focus {
-        outline: 0 !important;
-        box-shadow: none;
-        border-bottom: 2px solid seashell;
-    }
-
-    .form-control {
-        padding-left: 0 !important;
-        z-index: 1;
-        border: none;
-        border-bottom: 2px solid gray;
-        border-radius: 0;
+    .input-input:focus {
+        background-color: rgb(251, 251, 242);
     }
 
 }

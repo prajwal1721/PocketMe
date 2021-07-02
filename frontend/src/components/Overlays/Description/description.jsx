@@ -1,16 +1,20 @@
 import React from 'react';
 import './description.scss';
-export const Description = ({ title, longUrl, shortUrl, decription, user, toggle }) => {
-    const url = `${window.location.hostname}/${user}/${shortUrl}`;
+export const Description = ({ title, longUrl, shortUrl, description, user, toggle }) => {
+    const url = `http://${window.location.hostname}:${window.location.port}/${user}/${shortUrl}`;
     return (
-        <div>
-            <div onClick={(e) => { e.preventDefault(); toggle(false); }}>X</div>
+        <div className='overlay'>
+            {console.log(title, longUrl, shortUrl, description, user)}
+            <div onClick={(e) => { e.preventDefault(); toggle(false); }}>x</div>
             <div>{`Title: ${title}`}</div>
             <div>{`Long Url: ${longUrl}`}</div>
             <div>{`Shortened Route: ${shortUrl}`}</div>
-            <a href={url} target='_blank' rel="noreferrer">{`Shortened link: ${url}`}</a>
+            <div>
+                Shortened Url:
+                <a href={url} target='_blank' rel="noreferrer">{`${url}`}</a>
+            </div>
             <div>{`Description`}</div>
-            <div>{decription}</div>
+            <div>{description}</div>
         </div>
     )
 }

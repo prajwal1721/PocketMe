@@ -1,0 +1,22 @@
+.notlogged {
+    top: 23%;
+}
+
+.header {
+    font-size: 2.2rem;
+    color: green;
+}
+
+.button-container {
+    button {
+        font-size: 1.5rem;
+
+        :active {
+            text-decoration: double;
+        }
+
+        :hover {
+            scale: 1.1;
+        }
+    }
+}
