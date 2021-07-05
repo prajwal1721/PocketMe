@@ -20,12 +20,12 @@ router.post('/login', (req, res) => {
                 req.session.currentloggedin = userName;
                 console.log(req.session);
                 res.send({
-			message:`${userName} Logged succesfully`,
-			user:result
-		});
+                    message: `${userName} Logged succesfully`,
+                    user: result
+                });
             }
             else {
-                return res.status(400).json("Incorect password");
+                return res.status(400).json("Incorect password" + err.data.message);
             }
         });
         // res.send("recieved");

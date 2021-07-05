@@ -6,6 +6,10 @@ const UrlSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    title: {
+        type: String,
+        required: true
+    },
     longUrl: {
         type: mongoose.SchemaTypes.Url,
         required: true,

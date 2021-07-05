@@ -29,7 +29,7 @@ router.get("/all", (req, res) => {
     const user = req.session.currentloggedin;
     if (user == null) return res.send(null);
     console.log(req);
-    UrlData.find({ user }).select({ _id: 0, shortUrl: 1, description: 1, longUrl: 1 }).exec((err, file) => {
+    UrlData.find({ user }).select({ _id: 0,title:1, shortUrl: 1, description: 1, longUrl: 1 }).exec((err, file) => {
         if (err) {
             res.status(400).json(err._message);
             return console.log(err);
@@ -59,7 +59,7 @@ router.get("/qr", (req, res) => {
 });
 // add a url
 router.post('/add', (req, res) => {
-    const { shortUrl, longUrl, description } = req.body;
+    const {title, shortUrl, longUrl, description } = req.body;
    const user = req.session.currentloggedin;
 	
   if (user == null) return res.status(400).json("Login first");
@@ -81,7 +81,7 @@ router.post('/add', (req, res) => {
                     contentType: 'image/png'
                 };
                 console.log(qrImage);
-                var url1 = new UrlData({ user, shortUrl, longUrl, qrImage, description });
+                var url1 = new UrlData({ user,title, shortUrl, longUrl, qrImage, description });
                 url1.save((err, url12) => {
                     if (err) {
                         console.error(err);
